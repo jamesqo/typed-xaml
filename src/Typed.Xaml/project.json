@@ -1,0 +1,22 @@
+﻿{
+	"version": "1.0.0-*",
+	"description": "Typed.Xaml Class Library",
+	"authors": [ "James" ],
+	"tags": [ "" ],
+	"projectUrl": "",
+	"licenseUrl": "",
+
+	"dependencies": {
+		"Shims.Xaml": "1.4.0"
+	},
+
+	"frameworks": {
+		"net46": { },
+		"netcore50": {
+			"dependencies": {
+				"System.Runtime": "4.0.20",
+				"System.Runtime.InteropServices": "4.0.20"
+			}
+		}
+	}
+}
