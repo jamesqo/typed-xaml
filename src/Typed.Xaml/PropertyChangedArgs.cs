@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using Windows.UI.Xaml;
@@ -18,6 +17,13 @@ namespace Typed.Xaml
             this.OldValue = oldValue;
             this.NewValue = newValue;
             this.Property = property;
+        }
+
+        public static PropertyChangedArgs<T> CreateFrom(DependencyPropertyChangedEventArgs original)
+        {
+            var oldValue = (T)original.OldValue;
+            var newValue = (T)original.NewValue;
+            return new PropertyChangedArgs<T>(oldValue, newValue, original.Property);
         }
     }
 }

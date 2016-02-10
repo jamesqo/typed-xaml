@@ -11,11 +11,15 @@
 	},
 
 	"frameworks": {
-		"net46": { },
+		"net46": {
+			"frameworkAssemblies": {
+				"WindowsBase": "4.0.0.0"
+			}
+		},
 		"netcore50": {
 			"dependencies": {
-				"System.Runtime": "4.0.20",
-				"System.Runtime.InteropServices": "4.0.20"
+				"Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
+				"Target.WindowsRuntime": "8.1.0"
 			}
 		}
 	}
