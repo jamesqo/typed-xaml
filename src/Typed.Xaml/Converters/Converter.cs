@@ -3,74 +3,76 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows.Data;
+using Windows.UI.Xaml.Data;
 
 namespace Typed.Xaml.Converters
 {
-    public static class Converter
+    public abstract class Converter<TIn, TOut> : Converter<TIn, TOut, object>
     {
-        private class AnonymousConverter<TIn, TOut> : Converter<TIn, TOut>
+        public abstract TOut Convert(TIn value, CultureInfo culture);
+
+        public virtual TIn ConvertBack(TOut value, CultureInfo culture)
         {
-            private readonly Func<TIn, CultureInfo, TOut> convert;
-            private readonly Func<TOut, CultureInfo, TIn> convertBack;
-
-            public AnonymousConverter(Func<TIn, CultureInfo, TOut> convert, Func<TOut, CultureInfo, TIn> convertBack)
-            {
-                this.convert = convert;
-                this.convertBack = convertBack;
-            }
-
-            public override TOut Convert(TIn value, CultureInfo culture) => convert(value, culture);
-
-            public override TIn ConvertBack(TOut value, CultureInfo culture)
-            {
-                return convertBack == null ?
-                    base.ConvertBack(value, culture) :
-                    convertBack(value, culture);
-            }
+            throw new NotSupportedException();
         }
 
-        private class AnonymousConverter<TIn, TOut, TParameter> : Converter<TIn, TOut, TParameter>
+        public sealed override TOut Convert(TIn value, object parameter, CultureInfo culture)
         {
-            private readonly Func<TIn, TParameter, CultureInfo, TOut> convert;
-            private readonly Func<TOut, TParameter, CultureInfo, TIn> convertBack;
-
-            public AnonymousConverter(Func<TIn, TParameter, CultureInfo, TOut> convert, Func<TOut, TParameter, CultureInfo, TIn> convertBack)
-            {
-                this.convert = convert;
-                this.convertBack = convertBack;
-            }
-
-            public override TOut Convert(TIn value, TParameter parameter, CultureInfo culture)
-            {
-                return convert(value, parameter, culture);
-            }
-
-            public override TIn ConvertBack(TOut value, TParameter parameter, CultureInfo culture)
-            {
-                return convertBack == null ?
-                    base.ConvertBack(value, parameter, culture) :
-                    convertBack(value, parameter, culture);
-            }
+            return Convert(value, culture);
         }
 
-        public static Converter<TIn, TOut> Create<TIn, TOut>(Func<TIn, CultureInfo, TOut> convert)
+        public sealed override TIn ConvertBack(TOut value, object parameter, CultureInfo culture)
         {
-            return Create(convert, null);
+            return ConvertBack(value, culture);
+        }
+    }
+
+    public abstract class Converter<TIn, TOut, TParameter> : IConverter<TIn, TOut, TParameter>, IValueConverter
+    {
+        public abstract TOut Convert(TIn value, TParameter parameter, CultureInfo culture);
+
+        public virtual TIn ConvertBack(TOut value, TParameter parameter, CultureInfo culture)
+        {
+            throw new NotSupportedException();
         }
 
-        public static Converter<TIn, TOut> Create<TIn, TOut>(Func<TIn, CultureInfo, TOut> convert, Func<TOut, CultureInfo, TIn> convertBack)
+        // Different APIs: WPF uses Convert(object, Type, object, CultureInfo),
+        // while WinRT has Convert(object, Type, object, string).
+#if NET46
+        object IValueConverter.Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return new AnonymousConverter<TIn, TOut>(convert, convertBack);
+            return Convert(value, targetType, parameter, culture);
         }
 
-        public static Converter<TIn, TOut, TParameter> Create<TIn, TOut, TParameter>(Func<TIn, TParameter, CultureInfo, TOut> convert)
+        object IValueConverter.ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return Create(convert, null);
+            return ConvertBack(value, targetType, parameter, culture);
+        }
+#elif NETCORE50
+        object IValueConverter.Convert(object value, Type targetType, object parameter, string language)
+        {
+            return Convert(value, targetType, parameter, new CultureInfo(language));
         }
 
-        public static Converter<TIn, TOut, TParameter> Create<TIn, TOut, TParameter>(Func<TIn, TParameter, CultureInfo, TOut> convert, Func<TOut, TParameter, CultureInfo, TIn> convertBack)
+        object IValueConverter.ConvertBack(object value, Type targetType, object parameter, string language)
         {
-            return new AnonymousConverter<TIn, TOut, TParameter>(convert, convertBack);
+            return ConvertBack(value, targetType, parameter, new CultureInfo(language));
+        }
+#endif
+
+        // Helper methods
+
+        private object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            // TODO: targetType validation?
+            return Convert((TIn)value, (TParameter)parameter, culture);
+        }
+
+        private object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            // TODO: targetType validation?
+            return ConvertBack((TOut)value, (TParameter)parameter, culture);
         }
     }
 }
