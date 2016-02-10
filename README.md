@@ -36,18 +36,21 @@ Yuck! Not only did we [TBC], but we [TBC].
 Enter **Typed XAML**. With [this library], the code above now looks like this:
 
 ```csharp
-public static readonly DependencyProperty HeightProperty =
-    Dependency.Register<int, Square>(nameof(Height), OnHeightChanged);
-
-public int Height
+public class Square : DependencyObject
 {
-    get { return this.Get<int>(HeightProperty); }
-    set { this.Set(HeightProperty, value); }
-}
-
-private static void OnHeightChanged(Square square, IPropertyChangedArgs<int> e)
-{
-    square.Width = e.NewValue;
+    public static readonly DependencyProperty HeightProperty =
+        Dependency.Register<int, Square>(nameof(Height), OnHeightChanged);
+    
+    public int Height
+    {
+        get { return this.Get<int>(HeightProperty); }
+        set { this.Set(HeightProperty, value); }
+    }
+    
+    private static void OnHeightChanged(Square square, IPropertyChangedArgs<int> e)
+    {
+        square.Width = e.NewValue;
+    }
 }
 ```
 
