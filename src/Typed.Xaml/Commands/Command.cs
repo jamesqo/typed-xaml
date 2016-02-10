@@ -6,37 +6,21 @@ using System.Windows.Input;
 
 namespace Typed.Xaml
 {
-    public class Command : ICommand
+    public abstract class Command<T> : ICommand
     {
-        private readonly Action execute;
-
         public event EventHandler CanExecuteChanged;
 
-        public Command(Action execute)
-        {
-            this.execute = execute;
-        }
+        public abstract bool CanExecute(T parameter);
 
-        public bool CanExecute(object parameter) => true;
-
-        public void Execute(object parameter) => execute();
-    }
-
-    public class Command<T> : ICommand
-    {
-        private readonly Action<T> execute;
-
-        public event EventHandler CanExecuteChanged;
-
-        public Command(Action<T> execute)
-        {
-            this.execute = execute;
-        }
+        public abstract void Execute(T parameter);
 
         public bool CanExecute(object parameter) =>
-            parameter is T;
+            parameter is T && CanExecute((T)parameter);
 
         public void Execute(object parameter) =>
-            execute((T)parameter);
+            Execute((T)parameter);
+
+        protected void OnCanExecuteChanged(EventArgs args = null) =>
+            CanExecuteChanged?.Invoke(this, args ?? EventArgs.Empty);
     }
 }
