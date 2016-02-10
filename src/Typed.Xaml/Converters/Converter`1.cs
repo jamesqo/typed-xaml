@@ -37,6 +37,8 @@ namespace Typed.Xaml.Converters
             throw new NotSupportedException();
         }
 
+        // Different APIs: WPF uses Convert(object, Type, object, CultureInfo),
+        // while WinRT has Convert(object, Type, object, string).
 #if NET46
         object IValueConverter.Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
@@ -60,6 +62,7 @@ namespace Typed.Xaml.Converters
 #endif
 
         // Helper methods
+
         private object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             // TODO: targetType validation?
