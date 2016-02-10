@@ -8,7 +8,7 @@ using Windows.UI.Xaml.Data;
 
 namespace Typed.Xaml.Converters
 {
-    public abstract class Converter<TIn, TOut> : Converter<TIn, TOut, object>
+    public abstract class Converter<TIn, TOut> : Converter<TIn, TOut, object>, IConverter<TIn, TOut>
     {
         public abstract TOut Convert(TIn value, CultureInfo culture);
 
