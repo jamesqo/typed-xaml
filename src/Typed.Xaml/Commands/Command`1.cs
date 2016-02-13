@@ -10,14 +10,14 @@ namespace Typed.Xaml
     {
         public event EventHandler CanExecuteChanged;
 
-        public abstract bool CanExecute(T parameter);
+        public virtual bool CanExecute(T parameter) => true;
 
         public abstract void Execute(T parameter);
 
-        public bool CanExecute(object parameter) =>
+        bool ICommand.CanExecute(object parameter) =>
             parameter is T && CanExecute((T)parameter);
 
-        public void Execute(object parameter) =>
+        void ICommand.Execute(object parameter) =>
             Execute((T)parameter);
 
         protected void OnCanExecuteChanged(EventArgs args = null) =>
