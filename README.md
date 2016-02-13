@@ -14,7 +14,7 @@ public class Square : DependencyObject
             nameof(Height),
             typeof(int),
             typeof(Square),
-            new PropertyMetadata(null, OnHeightChanged));
+            new PropertyMetadata(0, OnHeightChanged));
     
     public int Height
     {
