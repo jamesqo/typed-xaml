@@ -4,7 +4,7 @@ Make full use of .NET generics in your WPF and Windows 10 projects.
 
 ## Introduction
 
-If you're a WPF or Windows 10 developer, you're no doubt aware of the massive amount of boilerplate, type-unsafe you must write to get things done. For example, here is how you would register a dependency property on an object:
+If you're a WPF or Windows 10 developer, you're no doubt aware of the massive amount of boilerplate, type-unsafe code you must write to get things done. For example, here is how you would register a dependency property on an object:
 
 ```csharp
 public class Square : DependencyObject
@@ -14,7 +14,7 @@ public class Square : DependencyObject
             nameof(Height),
             typeof(int),
             typeof(Square),
-            new PropertyMetadata(null, OnHeightChanged));
+            new PropertyMetadata(0, OnHeightChanged));
     
     public int Height
     {
