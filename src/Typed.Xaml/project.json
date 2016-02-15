@@ -1,10 +1,10 @@
 ﻿{
-	"version": "1.0.0-*",
-	"description": "Typed.Xaml Class Library",
-	"authors": [ "James" ],
-	"tags": [ "" ],
-	"projectUrl": "",
-	"licenseUrl": "",
+	"version": "1.0.0",
+	"description": "Typed XAML adds advanced generics support to WPF and Windows 10 apps.\n\nFind us on GitHub at http://github.com/jamesqo/typed-xaml",
+	"authors": [ "James Ko" ],
+	"tags": [ ".net csharp c# wpf windows 10 runtime apps app phone winrt generic generics typed xaml typed-xaml" ],
+	"projectUrl": "http://github.com/jamesqo/typed-xaml",
+	"licenseUrl": "http://github.com/jamesqo/typed-xaml/blob/master/LICENSE",
 
 	"dependencies": {
 		"Shims.Xaml": "1.4.0"
