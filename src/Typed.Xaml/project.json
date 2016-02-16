@@ -20,10 +20,10 @@
 				"WindowsBase": "4.0.0.0"
 			}
 		},
-		"netcore50": {
+		"netcore45": {
 			"dependencies": {
 				"Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
-				"Target.WindowsRuntime": "8.1.0"
+				"Target.Windows": "8.0.0"
 			}
 		}
 	}

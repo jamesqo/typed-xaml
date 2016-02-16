@@ -48,7 +48,7 @@ namespace Typed.Xaml.Converters
         {
             return ConvertBack(value, targetType, parameter, culture);
         }
-#elif NETCORE50
+#else
         object IValueConverter.Convert(object value, Type targetType, object parameter, string language)
         {
             return Convert(value, targetType, parameter, new CultureInfo(language));
