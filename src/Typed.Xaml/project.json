@@ -7,7 +7,7 @@
 	"licenseUrl": "http://github.com/jamesqo/typed-xaml/blob/master/LICENSE",
 
 	"dependencies": {
-		"Shims.Xaml": "1.6.0"
+		"Shims.Xaml": "1.8.0"
 	},
 
 	"frameworks": {
@@ -22,19 +22,15 @@
 				"WindowsBase": "4.0.0.0"
 			}
 		},
+		".NETPortable,Version=v4.5,Profile=Profile32": {
+			"dependencies": {
+				"Target.WindowsRuntime": "8.1.2"
+			}
+		},
 		"netcore45": {
 			"dependencies": {
 				"Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
 				"Target.Windows": "8.0.0"
-			}
-		},
-		"wpa81": {
-			"dependencies": {
-				"Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
-				"Target.WindowsPhone": "8.1.0"
-			},
-			"frameworkAssemblies": {
-				"mscorlib": "4.0.0.0"
 			}
 		}
 	}
