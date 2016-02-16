@@ -1,10 +1,12 @@
 # Typed XAML
 
+<img src="http://i.imgur.com/dm65ZkB.png" width="25%"/>
+
 Make full use of .NET generics in your WPF and Windows 10 projects.
 
 ## Introduction
 
-If you're a WPF or Windows 10 developer, you're no doubt aware of the massive amount of boilerplate, type-unsafe code you must write to get things done. For example, here is how you would register a dependency property on an object:
+If you're a XAML developer, you probably know that you have to write lots of type-unsafe code when implementing MVVM. For example, let's say you have a square and you want to change its width whenever the height changes. You would probably implement it like this:
 
 ```csharp
 public class Square : DependencyObject
@@ -31,11 +33,13 @@ public class Square : DependencyObject
 }
 ```
 
-Yuck! Not only did we [TBC], but we [TBC].
+Yuck! The code is filled with casts and things like `typeof`, and the `DependencyPropertyChangedEventArgs` makes the function look like a overstretched diving board. Is there any way we can fix this?
 
-Enter **Typed XAML**. With [this library], the code above now looks like this:
+Enter **Typed XAML**. Once refactored, the code above now looks like this:
 
 ```csharp
+using Typed.Xaml;
+
 public class Square : DependencyObject
 {
     public static readonly DependencyProperty HeightProperty =
@@ -54,7 +58,7 @@ public class Square : DependencyObject
 }
 ```
 
-TBC
+That's it! No casting, no `typeof`, and as an added bonus the syntax for the getter/setter has been shortened.
 
 ## License
 
