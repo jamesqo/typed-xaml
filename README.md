@@ -12,9 +12,9 @@ It's as easy as:
 Install-Package Typed.Xaml
 ```
 
-## Introduction
+## What is this for?
 
-If you're a XAML developer, you probably know that you have to write lots of type-unsafe code when implementing MVVM. For example, let's say you have a square and you want to change its width whenever the height changes. You would probably implement it like this:
+If you're a XAML developer, you probably know that you have to write lots of type-unsafe code to implement MVVM. For example, let's say you're making a class to model a square. You want to change its width whenever the height changes. With vanilla MVVM, you would probably write something like this:
 
 ```csharp
 public class Square : DependencyObject
