@@ -7,11 +7,13 @@
 	"licenseUrl": "http://github.com/jamesqo/typed-xaml/blob/master/LICENSE",
 
 	"dependencies": {
-		"Shims.Xaml": "1.6.0"
+		"Shims.Xaml": "1.6.0",
+		"System.Runtime": "4.0.10",
+		"System.Runtime.InteropServices": "4.0.10"
 	},
 
 	"frameworks": {
-		"net46": {
+		"net451": {
 			"frameworkAssemblies": {
 				"PresentationCore": "4.0.0.0",
 				"PresentationFramework": "4.0.0.0",

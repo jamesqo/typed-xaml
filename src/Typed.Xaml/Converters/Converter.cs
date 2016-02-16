@@ -39,7 +39,7 @@ namespace Typed.Xaml.Converters
 
         // Different APIs: WPF uses Convert(object, Type, object, CultureInfo),
         // while WinRT has Convert(object, Type, object, string).
-#if NET46
+#if NET451
         object IValueConverter.Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             return Convert(value, targetType, parameter, culture);
