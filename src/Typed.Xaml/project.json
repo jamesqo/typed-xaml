@@ -7,7 +7,7 @@
 	"licenseUrl": "http://github.com/jamesqo/typed-xaml/blob/master/LICENSE",
 
 	"dependencies": {
-		"Shims.Xaml": "1.4.0"
+		"Shims.Xaml": "1.6.0"
 	},
 
 	"frameworks": {
