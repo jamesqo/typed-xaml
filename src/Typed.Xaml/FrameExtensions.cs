@@ -16,8 +16,10 @@ namespace Typed.Xaml
         public static bool Navigate<T>(this Frame frame, object parameter) =>
             frame.Navigate(typeof(T), parameter);
 
+#if !NETCORE45
         public static bool Navigate<T>(this Frame frame, object parameter, NavigationTransitionInfo infoOverride) =>
             frame.Navigate(typeof(T), parameter, infoOverride);
+#endif
     }
 #endif
 }

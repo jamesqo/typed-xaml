@@ -35,6 +35,9 @@
 			}
 		},
 		"netcore45": {
+			"compilationOptions": {
+				"define": [ "NETCORE45" ]
+			},
 			"dependencies": {
 				"Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
 				"Target.Windows": "8.0.0"
