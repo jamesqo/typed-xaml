@@ -1,5 +1,5 @@
 ﻿{
-	"version": "3.0.1",
+	"version": "3.0.2",
 	"description": "Typed XAML adds advanced generics support to WPF and Windows 10 apps.\n\nFind us on GitHub at http://github.com/jamesqo/typed-xaml",
 	"authors": [ "James Ko" ],
 	"tags": [ ".net csharp c# wpf windows 10 runtime apps app phone winrt generic generics typed xaml typed-xaml" ],
@@ -24,7 +24,6 @@
 		},
 		".NETPortable,Version=v4.6,Profile=Profile32": {
 			"dependencies": {
-				"Microsoft.NETCore.Platforms": "1.0.0",
 				"Target.WindowsRuntime": "8.1.2"
 			},
 			"frameworkAssemblies": {
