@@ -50,6 +50,8 @@ That's it! No casting, no `typeof`, and as an added bonus the getter/setters are
 
 ## API Reference
 
+TBC.
+
 ## License
 
 [MIT](LICENSE)
