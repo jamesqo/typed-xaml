@@ -32,6 +32,9 @@
 			"dependencies": {
 				"Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
 				"Target.WindowsPhone": "8.1.0"
+			},
+			"frameworkAssemblies": {
+				"mscorlib": "4.0.0.0"
 			}
 		}
 	}
