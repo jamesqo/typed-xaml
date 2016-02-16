@@ -22,9 +22,16 @@
 				"WindowsBase": "4.0.0.0"
 			}
 		},
-		".NETPortable,Version=v4.5,Profile=Profile32": {
+		".NETPortable,Version=v4.6,Profile=Profile32": {
 			"dependencies": {
 				"Target.WindowsRuntime": "8.1.2"
+			},
+			"frameworkAssemblies": {
+				"mscorlib": { "type": "build" },
+				"System.Globalization": { "type": "build" },
+				"System.ObjectModel": { "type": "build" },
+				"System.Runtime": { "type": "build" },
+				"System.Runtime.InteropServices": { "type": "build" }
 			}
 		},
 		"netcore45": {
