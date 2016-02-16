@@ -4,6 +4,14 @@
 
 Make full use of .NET generics in your WPF and Windows 10 projects.
 
+## Installation
+
+It's as easy as:
+
+```powershell
+Install-Package Typed.Xaml
+```
+
 ## Introduction
 
 If you're a XAML developer, you probably know that you have to write lots of type-unsafe code when implementing MVVM. For example, let's say you have a square and you want to change its width whenever the height changes. You would probably implement it like this:
