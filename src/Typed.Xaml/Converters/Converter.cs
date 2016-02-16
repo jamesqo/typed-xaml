@@ -6,7 +6,7 @@ using Windows.UI.Xaml.Data;
 
 namespace Typed.Xaml.Converters
 {
-    public abstract class Converter<TIn, TOut> : Converter<TIn, TOut, object>
+    public abstract class Converter<TIn, TOut> : ConverterBase
     {
         public abstract TOut Convert(TIn value, CultureInfo culture);
 
@@ -15,18 +15,18 @@ namespace Typed.Xaml.Converters
             throw new NotSupportedException();
         }
 
-        public sealed override TOut Convert(TIn value, object parameter, CultureInfo culture)
+        protected sealed override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return Convert(value, culture);
+            return Convert((TIn)value, culture);
         }
 
-        public sealed override TIn ConvertBack(TOut value, object parameter, CultureInfo culture)
+        protected sealed override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return ConvertBack(value, culture);
+            return ConvertBack((TOut)value, culture);
         }
     }
 
-    public abstract class Converter<TIn, TOut, TParameter> : IValueConverter
+    public abstract class Converter<TIn, TOut, TParameter> : ConverterBase
     {
         public abstract TOut Convert(TIn value, TParameter parameter, CultureInfo culture);
 
@@ -35,41 +35,13 @@ namespace Typed.Xaml.Converters
             throw new NotSupportedException();
         }
 
-        // Different APIs: WPF uses Convert(object, Type, object, CultureInfo),
-        // while WinRT has Convert(object, Type, object, string).
-#if NET451
-        object IValueConverter.Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        protected sealed override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return Convert(value, targetType, parameter, culture);
-        }
-
-        object IValueConverter.ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            return ConvertBack(value, targetType, parameter, culture);
-        }
-#else
-        object IValueConverter.Convert(object value, Type targetType, object parameter, string language)
-        {
-            return Convert(value, targetType, parameter, new CultureInfo(language));
-        }
-
-        object IValueConverter.ConvertBack(object value, Type targetType, object parameter, string language)
-        {
-            return ConvertBack(value, targetType, parameter, new CultureInfo(language));
-        }
-#endif
-
-        // Helper methods
-
-        private object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            // TODO: targetType validation?
             return Convert((TIn)value, (TParameter)parameter, culture);
         }
 
-        private object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        protected sealed override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            // TODO: targetType validation?
             return ConvertBack((TOut)value, (TParameter)parameter, culture);
         }
     }
