@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
