@@ -48,6 +48,8 @@ public class Square : DependencyObject
 
 That's it! No casting, no `typeof`, and as an added bonus the getter/setters are clearer to read.
 
+## API Reference
+
 ## License
 
 [MIT](LICENSE)
