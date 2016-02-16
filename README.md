@@ -1,41 +1,33 @@
 # Typed XAML
 
+<img src="http://i.imgur.com/dm65ZkB.png" width="25%"/>
+
 Make full use of .NET generics in your WPF and Windows 10 projects.
 
-## Introduction
+## Installation
 
-If you're a WPF or Windows 10 developer, you're no doubt aware of the massive amount of boilerplate, type-unsafe code you must write to get things done. For example, here is how you would register a dependency property on an object:
+It's as easy as:
 
-```csharp
-public class Square : DependencyObject
-{
-    public static readonly DependencyProperty HeightProperty =
-        DependencyProperty.Register(
-            nameof(Height),
-            typeof(int),
-            typeof(Square),
-            new PropertyMetadata(0, OnHeightChanged));
-    
-    public int Height
-    {
-        get { return (int)GetValue(HeightProperty); }
-        set { SetValue(HeightProperty, value); }
-    }
-    
-    private static void OnHeightChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
-    {
-        var square = (Square)sender;
-        var newValue = (int)e.NewValue;
-        square.Width = newValue;
-    }
-}
+```powershell
+Install-Package Typed.Xaml
 ```
 
-Yuck! Not only did we [TBC], but we [TBC].
+## What can it do?
 
-Enter **Typed XAML**. With [this library], the code above now looks like this:
+Typed XAML:
+
+- makes your code more readable
+- introduces a cleaner syntax for expressing types
+- lets you easily create dependency properties, free of casting and `typeof`
+- provides generic base classes that can work with the type-unsafe APIs
+
+## Show me!
+
+Here's a simple example, showing how you would bind a square's width to its height:
 
 ```csharp
+using Typed.Xaml;
+
 public class Square : DependencyObject
 {
     public static readonly DependencyProperty HeightProperty =
@@ -54,7 +46,9 @@ public class Square : DependencyObject
 }
 ```
 
-TBC
+That's it! No casting, no `typeof`, and as an added bonus the getter/setters are clearer to read.
+
+## API Reference
 
 ## License
 
