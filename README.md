@@ -12,38 +12,18 @@ It's as easy as:
 Install-Package Typed.Xaml
 ```
 
-## What is this for?
+## What can it do?
 
-If you're a XAML developer, you probably know that you have to write lots of type-unsafe code to implement MVVM. For example, let's say you're making a class to model a square. You want to change its width whenever the height changes. With vanilla MVVM, you would probably write something like this:
+Typed XAML:
 
-```csharp
-public class Square : DependencyObject
-{
-    public static readonly DependencyProperty HeightProperty =
-        DependencyProperty.Register(
-            nameof(Height),
-            typeof(int),
-            typeof(Square),
-            new PropertyMetadata(0, OnHeightChanged));
-    
-    public int Height
-    {
-        get { return (int)GetValue(HeightProperty); }
-        set { SetValue(HeightProperty, value); }
-    }
-    
-    private static void OnHeightChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
-    {
-        var square = (Square)sender;
-        var newValue = (int)e.NewValue;
-        square.Width = newValue;
-    }
-}
-```
+- makes your code more readable
+- introduces a cleaner syntax for expressing types
+- lets you easily create dependency properties, free of casting and `typeof`
+- provides generic base classes that can work with the type-unsafe APIs
 
-Yuck! The code is filled with casts and things like `typeof`, and the `DependencyPropertyChangedEventArgs` makes the function look like a overstretched diving board. Is there any way we can fix this?
+## Show me!
 
-Enter **Typed XAML**. Once refactored, the code above now looks like this:
+Here's a simple example, showing how you would bind a square's width to its height:
 
 ```csharp
 using Typed.Xaml;
@@ -66,7 +46,7 @@ public class Square : DependencyObject
 }
 ```
 
-That's it! No casting, no `typeof`, and as an added bonus the syntax for the getter/setter has been shortened.
+That's it! No casting, no `typeof`, and as an added bonus the getter/setters are clearer to read.
 
 ## License
 
