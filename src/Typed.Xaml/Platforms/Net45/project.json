@@ -1,15 +1,15 @@
 ﻿{
-	"dependencies": {
+    "dependencies": {
         "Shims.Xaml": "1.8.0"
     },
     
-	"frameworks": {
-		"net45": {
-			"frameworkAssemblies": {
+    "frameworks": {
+        "net45": {
+            "frameworkAssemblies": {
                 "PresentationCore": "4.0.0.0",
                 "PresentationFramework": "4.0.0.0",
-				"WindowsBase": "4.0.0.0"
-			}
-		}
-	}
+                "WindowsBase": "4.0.0.0"
+            }
+        }
+    }
 }

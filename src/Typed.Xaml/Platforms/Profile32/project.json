@@ -3,7 +3,7 @@
         "Shims.Xaml": "1.8.0"
     },
     
-	"frameworks": {
-		".NETPortable,Version=v4.6,Profile=Profile32": { }
-	}
+    "frameworks": {
+        ".NETPortable,Version=v4.6,Profile=Profile32": { }
+    }
 }
