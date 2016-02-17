@@ -67,19 +67,20 @@
     <None Include="Platforms\Profile32\project.json" />
   </ItemGroup>
   <PropertyGroup>
+    <!-- Configure a different project.json for each platform -->
     <ProjectJsonRoot>Platforms\$(Platform)</ProjectJsonRoot>
     <ProjectJson>$(ProjectJsonRoot)\project.json</ProjectJson>
-    <ProjectLockJson>$(ProjectJsonRoot)\project.lock.json</ProjectLockJson>
+    <!-- <ProjectLockJson>$(ProjectJsonRoot)\project.lock.json</ProjectLockJson> -->
   </PropertyGroup>
   <!-- Import the targets for regular class libs -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" Condition=" '$(Platform)' == 'Net45' " />
   <!-- Import the PCL targets -->
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" Condition=" '$(Platform)' == 'Profile32' " />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
+  <!-- Before building, use dnu to restore packages -->
   <Target Name="BeforeBuild">
+    <PropertyGroup>
+      <DnuRestore>dnu restore</DnuRestore>
+    </PropertyGroup>
+    <Exec Command="$(DnuRestore) $(ProjectJson)" />
   </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>
