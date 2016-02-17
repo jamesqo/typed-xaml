@@ -13,6 +13,14 @@ Global
 		Release|Profile32 = Release|Profile32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5E1C6142-9DD8-4DCF-AE8E-310BD94C23CE}.Debug|Net45.ActiveCfg = Debug|Net45
+		{5E1C6142-9DD8-4DCF-AE8E-310BD94C23CE}.Debug|Net45.Build.0 = Debug|Net45
+		{5E1C6142-9DD8-4DCF-AE8E-310BD94C23CE}.Release|Net45.ActiveCfg = Release|Net45
+		{5E1C6142-9DD8-4DCF-AE8E-310BD94C23CE}.Release|Net45.Build.0 = Release|Net45
+		{5E1C6142-9DD8-4DCF-AE8E-310BD94C23CE}.Debug|Profile32.ActiveCfg = Debug|Profile32
+		{5E1C6142-9DD8-4DCF-AE8E-310BD94C23CE}.Debug|Profile32.Build.0 = Debug|Profile32
+		{5E1C6142-9DD8-4DCF-AE8E-310BD94C23CE}.Release|Profile32.ActiveCfg = Release|Profile32
+		{5E1C6142-9DD8-4DCF-AE8E-310BD94C23CE}.Release|Profile32.Build.0 = Release|Profile32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
