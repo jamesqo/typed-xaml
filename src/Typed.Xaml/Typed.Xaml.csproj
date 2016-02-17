@@ -66,6 +66,10 @@
     <None Include="Platforms\Net45\project.json" />
     <None Include="Platforms\Profile32\project.json" />
   </ItemGroup>
+  <!-- Reference all of the assemblies downloaded via dnu restore -->
+  <ItemGroup>
+    <Reference Include="packages\**\*.dll" />
+  </ItemGroup>
   <PropertyGroup>
     <!-- Configure a different project.json for each platform -->
     <ProjectJsonRoot>Platforms\$(Platform)</ProjectJsonRoot>
