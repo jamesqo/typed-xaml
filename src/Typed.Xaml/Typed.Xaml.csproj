@@ -62,30 +62,8 @@
     <TargetPlatform Include="Windows, Version=8.1" />
     <TargetPlatform Include="WindowsPhoneApp, Version=8.1" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Platforms\Net45\project.json" />
-    <None Include="Platforms\Profile32\project.json" />
-  </ItemGroup>
-  <!-- Reference all of the assemblies downloaded via dnu restore -->
-  <ItemGroup>
-    <Reference Include="packages\**\*.dll" />
-  </ItemGroup>
-  <PropertyGroup>
-    <!-- Configure a different project.json for each platform -->
-    <ProjectJsonRoot>Platforms\$(Platform)</ProjectJsonRoot>
-    <ProjectJson>$(ProjectJsonRoot)\project.json</ProjectJson>
-    <ProjectLockJson>$(ProjectJsonRoot)\project.lock.json</ProjectLockJson>
-  </PropertyGroup>
   <!-- Import the targets for regular class libs -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" Condition=" '$(Platform)' == 'Net45' " />
   <!-- Import the PCL targets -->
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" Condition=" '$(Platform)' == 'Profile32' " />
-  <!-- Before building, use dnu to restore packages -->
-  <Target Name="BeforeBuild">
-    <PropertyGroup>
-      <DnuRestore>dnu restore</DnuRestore>
-      <PackagesDirectory>packages</PackagesDirectory>
-    </PropertyGroup>
-    <Exec Command="$(DnuRestore) $(ProjectJson) --packages $(PackagesDirectory)" />
-  </Target>
 </Project>
