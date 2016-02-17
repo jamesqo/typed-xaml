@@ -80,7 +80,8 @@
   <Target Name="BeforeBuild">
     <PropertyGroup>
       <DnuRestore>dnu restore</DnuRestore>
+      <PackagesDirectory>packages</PackagesDirectory>
     </PropertyGroup>
-    <Exec Command="$(DnuRestore) $(ProjectJson)" />
+    <Exec Command="$(DnuRestore) $(ProjectJson) --packages $(PackagesDirectory)" />
   </Target>
 </Project>
