@@ -71,10 +71,6 @@
     <ProjectJson>$(ProjectJsonRoot)\project.json</ProjectJson>
     <ProjectLockJson>$(ProjectJsonRoot)\project.lock.json</ProjectLockJson>
   </PropertyGroup>
-  <ItemGroup>
-    <!-- Include a common project.json for shared configs -->
-    <None Include="project.json" />
-  </ItemGroup>
   <!-- Import the targets for regular class libs -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" Condition=" '$(Platform)' == 'Net45' " />
   <!-- Import the PCL targets -->
