@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">Net45</Platform>
+    <ProjectGuid>{5E1C6142-9DD8-4DCF-AE8E-310BD94C23CE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Typed.Xaml</RootNamespace>
+    <AssemblyName>Typed.Xaml</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'Net45' ">
+    <!-- Target WPF apps -->
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'Profile32' ">
+    <!-- Target Windows 8.1 Universal apps -->
+    <TargetFrameworkProfile>Profile32</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\$(Platform)</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\$(Platform)</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Commands\Command.cs" />
+    <Compile Include="Commands\Command`1.cs" />
+    <Compile Include="Commands\Instruction.cs" />
+    <Compile Include="Commands\Instruction`1.cs" />
+    <Compile Include="Converters\Converter.cs" />
+    <Compile Include="Converters\ConverterBase.cs" />
+    <Compile Include="Dependency.cs" />
+    <Compile Include="DependencyObjectExtensions.cs" />
+    <Compile Include="FrameExtensions.cs" />
+    <Compile Include="IPropertyChangedArgs.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PropertyChangedArgs.cs" />
+    <Compile Include="PropertyChangedCallback.cs" />
+  </ItemGroup>
+  <ItemGroup Condition=" '$(Platform)' == 'Net45' ">
+    <TargetPlatform Include=".NETFramework, Version=4.5" />
+  </ItemGroup>
+  <ItemGroup Condition=" '$(Platform)' == 'Profile32' ">
+    <TargetPlatform Include="Windows, Version=8.1" />
+    <TargetPlatform Include="WindowsPhoneApp, Version=8.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Platforms\Net45\project.json" />
+    <None Include="Platforms\Profile32\project.json" />
+  </ItemGroup>
+  <PropertyGroup>
+    <ProjectJsonRoot>Platforms\$(Platform)</ProjectJsonRoot>
+    <ProjectJson>$(ProjectJsonRoot)\project.json</ProjectJson>
+    <ProjectLockJson>$(ProjectJsonRoot)\project.lock.json</ProjectLockJson>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- Include a common project.json for shared configs -->
+    <None Include="project.json" />
+  </ItemGroup>
+  <!-- Import the targets for regular class libs -->
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" Condition=" '$(Platform)' == 'Net45' " />
+  <!-- Import the PCL targets -->
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" Condition=" '$(Platform)' == 'Profile32' " />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

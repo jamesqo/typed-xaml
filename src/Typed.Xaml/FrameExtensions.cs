@@ -7,7 +7,7 @@ using Windows.UI.Xaml.Media.Animation;
 
 namespace Typed.Xaml
 {
-#if !NET451
+#if !NET45
     public static class FrameExtensions
     {
         public static bool Navigate<T>(this Frame frame) =>
