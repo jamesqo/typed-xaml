@@ -1,0 +1,10 @@
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <CompileRoot>$(MSBuildThisFileDirectory)\Typed.Xaml</CompileRoot>
+    </PropertyGroup>
+    <ItemGroup>
+        <Compile Include="$(CompileRoot)\**\*.cs" />
+        <!-- Exclude the AssemblyInfo -->
+        <Compile Exclude="$(CompileRoot)\Properties\AssemblyInfo.cs" />
+    </ItemGroup>
+</Project>
