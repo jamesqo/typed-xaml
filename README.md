@@ -14,7 +14,7 @@ Install-Package Typed.Xaml
 
 ## Supported Platforms
 
-- .NET Framework 4.5+
+- .NET Framework 4.5.1 and above
 - Windows 10 (of course)
 - Windows and Windows Phone 8.1
 

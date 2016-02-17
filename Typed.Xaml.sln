@@ -3,24 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Typed.Xaml", "src\Typed.Xaml\Typed.Xaml.csproj", "{5E1C6142-9DD8-4DCF-AE8E-310BD94C23CE}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Typed.Xaml", "src\Typed.Xaml\Typed.Xaml.xproj", "{85ABD542-3E6E-4626-A650-0E03FEC76140}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Net45 = Debug|Net45
-		Debug|Profile32 = Debug|Profile32
-		Release|Net45 = Release|Net45
-		Release|Profile32 = Release|Profile32
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5E1C6142-9DD8-4DCF-AE8E-310BD94C23CE}.Debug|Net45.ActiveCfg = Debug|Net45
-		{5E1C6142-9DD8-4DCF-AE8E-310BD94C23CE}.Debug|Net45.Build.0 = Debug|Net45
-		{5E1C6142-9DD8-4DCF-AE8E-310BD94C23CE}.Release|Net45.ActiveCfg = Release|Net45
-		{5E1C6142-9DD8-4DCF-AE8E-310BD94C23CE}.Release|Net45.Build.0 = Release|Net45
-		{5E1C6142-9DD8-4DCF-AE8E-310BD94C23CE}.Debug|Profile32.ActiveCfg = Debug|Profile32
-		{5E1C6142-9DD8-4DCF-AE8E-310BD94C23CE}.Debug|Profile32.Build.0 = Debug|Profile32
-		{5E1C6142-9DD8-4DCF-AE8E-310BD94C23CE}.Release|Profile32.ActiveCfg = Release|Profile32
-		{5E1C6142-9DD8-4DCF-AE8E-310BD94C23CE}.Release|Profile32.Build.0 = Release|Profile32
+		{85ABD542-3E6E-4626-A650-0E03FEC76140}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85ABD542-3E6E-4626-A650-0E03FEC76140}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85ABD542-3E6E-4626-A650-0E03FEC76140}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85ABD542-3E6E-4626-A650-0E03FEC76140}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
