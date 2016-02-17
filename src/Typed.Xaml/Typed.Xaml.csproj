@@ -74,7 +74,7 @@
     <!-- Configure a different project.json for each platform -->
     <ProjectJsonRoot>Platforms\$(Platform)</ProjectJsonRoot>
     <ProjectJson>$(ProjectJsonRoot)\project.json</ProjectJson>
-    <!-- <ProjectLockJson>$(ProjectJsonRoot)\project.lock.json</ProjectLockJson> -->
+    <ProjectLockJson>$(ProjectJsonRoot)\project.lock.json</ProjectLockJson>
   </PropertyGroup>
   <!-- Import the targets for regular class libs -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" Condition=" '$(Platform)' == 'Net45' " />
