@@ -188,6 +188,26 @@ The type parameter is checked at compile-time to extend `Page`, so you don't acc
 
 Want to contribute to Typed XAML? Awesome, it's really appreciated. If you have a feature you'd like to see added or a pull request you'd like to make, *please* don't hold back.
 
+### Building the repo
+
+Just `git clone` as usual and run this:
+
+```console
+./build
+```
+
+That'll build the entire solution as Release/AnyCPU. You can run `build -?` to get more help on this.
+
+### Directory structure
+
+Most of the source code lives in the repo's `src/` directory. This is how it's organized:
+
+- **Typed.Xaml.Uwp** - code that compiles only for UWP
+- **Typed.Xaml.Wpf** - code that compiles only for WPF
+- **Typed.Xaml** - code that compiles for both platforms (where most of the code is found)
+- **Common.props** - project file used to achieve code sharing
+- **Typed.Xaml.nuspec** - package file used to publish the library to NuGet
+
 ## License
 
 [MIT](LICENSE)
