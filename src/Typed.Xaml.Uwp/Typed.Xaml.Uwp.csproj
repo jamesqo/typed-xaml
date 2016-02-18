@@ -8,8 +8,8 @@
     <ProjectGuid>{3AC10046-9C4A-4916-9E0E-6562C0C358CC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Typed.Xaml.Uwp</RootNamespace>
-    <AssemblyName>Typed.Xaml.Uwp</AssemblyName>
+    <RootNamespace>Typed.Xaml</RootNamespace>
+    <AssemblyName>Typed.Xaml</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -41,6 +41,7 @@
     <TargetPlatform Include="WindowsPhoneApp, Version=8.1" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converters\ConverterBase.cs" />
     <Compile Include="FrameExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
