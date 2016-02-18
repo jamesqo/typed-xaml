@@ -184,6 +184,10 @@ Frame.Navigate<OtherPage>();
 
 The type parameter is checked at compile-time to extend `Page`, so you don't accidentally write something like `Frame.Navigate<int>()`.
 
+## Contributing
+
+Want to contribute to Typed XAML? Awesome, it's really appreciated. If you have a feature you'd like to see added or a pull request you'd like to make, *please* don't hold back.
+
 ## License
 
 [MIT](LICENSE)
