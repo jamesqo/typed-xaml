@@ -2,6 +2,8 @@
 
 <img src="http://i.imgur.com/dm65ZkB.png" width="25%"/>
 
+![](https://travis-ci.org/jamesqo/typed-xaml.svg) ![](https://ci.appveyor.com/api/projects/status/github/jamesqo/typed-xaml?branch=master&svg=true)
+
 Make full use of .NET generics in your WPF and Windows 10 projects.
 
 ## Installation
