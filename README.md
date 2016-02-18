@@ -98,9 +98,11 @@ public string Foobar
 Typed XAML allows you to easily create commands like this:
 
 ```csharp
+using Typed.Xaml.Commands;
+
 public class MyCommand : Command<string>
 {
-    public void Execute(string param)
+    public override void Execute(string param)
     {
         Console.WriteLine(param);
     }
@@ -131,6 +133,37 @@ public Command<string> WriteLine { get; } = new Instruction<string>(Console.Writ
 <!-- In your XAML... -->
 <Button Command="{Binding WriteLine}"
         CommandParameter="Hello, world!"/>
+```
+
+### Value converters
+
+You can create a value converter like this:
+
+```csharp
+using Typed.Xaml.Converters;
+
+public class MyConverter : Converter<object, string>
+{
+    // convert objects to strings
+    public override string Convert(object value, CultureInfo culture)
+    {
+        return $"{value} :)";
+    }
+}
+```
+
+Similarly to the `Command` APIs, here's how you would use it from XAML:
+
+```xaml
+<Page.Resources>
+    <local:MyConverter x:Key="SmileyConverter"/>
+</Page.Resources>
+
+<TextBox x:Name="TextBox" Text="Have a nice day"/>
+
+<Button Content="{Binding Text,
+                  ElementName=TextBox,
+                  Converter={StaticResource SmileyConverter}}"/> <!-- displays 'Have a nice day :)' -->
 ```
 
 ## API Reference
