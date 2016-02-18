@@ -1,9 +1,11 @@
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
-        <CompileRoot>$(MSBuildThisFileDirectory)\Typed.Xaml</CompileRoot>
+        <CompileRoot>$(MSBuildThisFileDirectory)Typed.Xaml</CompileRoot>
     </PropertyGroup>
     <ItemGroup>
         <!-- Compile everything in the Typed.Xaml dir -->
-        <Compile Include="$(CompileRoot)\**\*.cs" />
+        <Compile Include="$(CompileRoot)\**\*.cs">
+            <Link>$([MSBuild]::MakeRelative('$(CompileRoot)', '%(FullPath)'))</Link>
+        </Compile>
     </ItemGroup>
 </Project>
