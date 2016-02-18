@@ -44,7 +44,4 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <Target Name="BeforeBuild">
-    <Message Text="blah" Importance="High" />
-  </Target>
 </Project>
