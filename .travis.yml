@@ -1,10 +1,12 @@
 language: csharp
-solution: Typed.Xaml.sln
 install:
   - curl -sSL https://raw.githubusercontent.com/aspnet/Home/dev/dnvminstall.sh | bash
   - source ~/.dnx/dnvm/dnvm.sh
   - dnvm upgrade
   - nuget restore
+  # Mono hasn't implemented WPF, so don't build that
+  - cd src/Typed.Xaml.Uwp
+  - xbuild /p:Configuration=Release
 mono:
   - nightly
 notifications:
