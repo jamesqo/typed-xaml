@@ -3,6 +3,7 @@ install:
   - curl -sSL https://raw.githubusercontent.com/aspnet/Home/dev/dnvminstall.sh | bash
   - source ~/.dnx/dnvm/dnvm.sh
   - dnvm upgrade
+  - apt-get install referenceassemblies-pcl # required so Mono understands the .NETPortable TFMs
   - nuget restore
   - cd src/Typed.Xaml.Uwp # Mono hasn't implemented WPF, so don't build that
   - xbuild /p:Configuration=Release
