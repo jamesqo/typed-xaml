@@ -1,0 +1,6 @@
+language: csharp
+solution: Typed.Xaml.sln
+mono:
+  - nightly
+notifications:
+  email: false
