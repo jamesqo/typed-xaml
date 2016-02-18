@@ -4,6 +4,7 @@ install:
   - curl -sSL https://raw.githubusercontent.com/aspnet/Home/dev/dnvminstall.sh | bash
   - source ~/.dnx/dnvm/dnvm.sh
   - dnvm upgrade
+  - nuget restore
 mono:
   - nightly
 notifications:
