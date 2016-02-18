@@ -56,6 +56,6 @@ call "%~dp0build.cmd" -p "Any CPU" -c Release
 :: Create the package
 cd "%~dp0src"
 del /q *.nupkg > nul 2>&1
-"%nuget%" pack *.nuspec -Prop Version=%version%
+"%nuget%" pack Typed.Xaml.nuspec -Prop Version=%version%
 "%nuget%" push *.nupkg
 del /q *.nupkg > nul
