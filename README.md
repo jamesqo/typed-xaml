@@ -86,8 +86,8 @@ as opposed to this:
 ```csharp
 public string Foobar
 {
-    get { return (string)this.GetValue(FoobarProperty); }
-    set { this.SetValue(FoobarProperty, value); }
+    get { return (string)GetValue(FoobarProperty); }
+    set { SetValue(FoobarProperty, value); }
 }
 ```
 
