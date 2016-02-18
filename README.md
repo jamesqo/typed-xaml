@@ -166,6 +166,8 @@ Similarly to the `Command` APIs, here's how you would use it from XAML:
                   Converter={StaticResource SmileyConverter}}"/> <!-- displays 'Have a nice day :)' -->
 ```
 
+If you wish to pass in values to your converter, you can inherit from the `Converter<I, P, O>` class which takes a parameter of type `P`.
+
 ## API Reference
 
 TBC.
