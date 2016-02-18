@@ -91,6 +91,48 @@ public string Foobar
 }
 ```
 
+## More Features
+
+### Type-safe commands
+
+Typed XAML allows you to easily create commands like this:
+
+```csharp
+public class MyCommand : Command<string>
+{
+    public void Execute(string param)
+    {
+        Console.WriteLine(param);
+    }
+}
+```
+
+The `Command<T>` base class implements `ICommand`, which means you can easily call your command from XAML:
+
+```xaml
+<Page.Resources>
+    <local:MyCommand x:Key="ClickedCommand"/>
+</Page.Resources>
+
+<Button Command="{StaticResource ClickedCommand}"
+        CommandParameter="Hello, world!"/>
+```
+
+#### Instructions
+
+Don't want to go through the hassle of defining a new class? You can use `Instruction`, which lets you define your command dynamically. For example, here's the above code rewritten to use instructions:
+
+```csharp
+// In your code-behind...
+public Command<string> WriteLine { get; } = new Instruction<string>(Console.WriteLine);
+```
+
+```xaml
+<!-- In your XAML... -->
+<Button Command="{Binding WriteLine}"
+        CommandParameter="Hello, world!"/>
+```
+
 ## API Reference
 
 TBC.
