@@ -22,12 +22,11 @@ Install-Package Typed.Xaml
 
 ## What can it do?
 
-Typed XAML:
+Typed XAML has three main goals:
 
-- makes your code more readable
-- introduces a cleaner syntax for expressing types
-- lets you easily create dependency properties, free of casting and `typeof`
-- provides generic base classes that can work with the type-unsafe APIs
+- it lets you write your MVVM code in modern, generic C#
+- it provides classes that bridge with the type-unsafe APIs
+- it does not force you to refactor existing codebases
 
 ## Show me!
 
@@ -54,7 +53,134 @@ public class Square : DependencyObject
 }
 ```
 
-That's it! No casting, no `typeof`, and as an added bonus the getter/setters are clearer to read.
+Note the lack of any casting/`typeof` operators, which we would have to (ab)use in vanilla MVVM.
+
+## How does it work?
+
+This philosophy of Typed XAML is that *it's just syntax sugar.* All it does is call into the existing APIs you know and <s>hate</s> love. For example, here is how the `Get` and `Set` extension methods for `DependencyObject` are written:
+
+```csharp
+public static T Get<T>(this DependencyObject obj, DependencyProperty property)
+{
+    return (T)obj.GetValue(property);
+}
+
+public static void Set<T>(this DependencyObject obj, DependencyProperty property, T value)
+{
+    obj.SetValue(property, value);
+}
+```
+
+As you can see, all they're doing is calling into existing functions. While this may not provide a huge functional benefit, it *does* allow you to write cleaner code like this:
+
+```csharp
+public string Foobar
+{
+    get { return this.Get<string>(FoobarProperty); }
+    set { this.Set(FoobarProperty, value); }
+}
+```
+
+as opposed to this:
+
+```csharp
+public string Foobar
+{
+    get { return (string)GetValue(FoobarProperty); }
+    set { SetValue(FoobarProperty, value); }
+}
+```
+
+## More Features
+
+### Type-safe commands
+
+Typed XAML allows you to easily create commands like this:
+
+```csharp
+using Typed.Xaml.Commands;
+
+public class MyCommand : Command<string>
+{
+    public override void Execute(string param)
+    {
+        Console.WriteLine(param);
+    }
+}
+```
+
+The `Command<T>` base class implements `ICommand`, which means you can easily call your command from XAML:
+
+```xaml
+<Page.Resources>
+    <local:MyCommand x:Key="ClickedCommand"/>
+</Page.Resources>
+
+<Button Command="{StaticResource ClickedCommand}"
+        CommandParameter="Hello, world!"/>
+```
+
+#### Instructions
+
+Don't want to go through the hassle of defining a new class? You can use `Instruction`, which lets you define your command dynamically. For example, here's the above code rewritten to use instructions:
+
+```csharp
+// In your code-behind...
+public Command<string> WriteLine { get; } = new Instruction<string>(Console.WriteLine);
+```
+
+```xaml
+<!-- In your XAML... -->
+<Button Command="{Binding WriteLine}"
+        CommandParameter="Hello, world!"/>
+```
+
+### Value converters
+
+You can create a value converter like this:
+
+```csharp
+using Typed.Xaml.Converters;
+
+public class MyConverter : Converter<object, string>
+{
+    // convert objects to strings
+    public override string Convert(object value, CultureInfo culture)
+    {
+        return $"{value} :)";
+    }
+}
+```
+
+Similarly to the `Command` APIs, here's how you would use it from XAML:
+
+```xaml
+<Page.Resources>
+    <local:MyConverter x:Key="SmileyConverter"/>
+</Page.Resources>
+
+<TextBox x:Name="TextBox" Text="Have a nice day"/>
+
+<Button Content="{Binding Text,
+                  ElementName=TextBox,
+                  Converter={StaticResource SmileyConverter}}"/> <!-- displays 'Have a nice day :)' -->
+```
+
+If you wish to pass in values to your converter, you can inherit from the `Converter<I, P, O>` class which takes an extra parameter of type `P`.
+
+### Frame extensions (UWP only)
+
+You can change code like this:
+
+```csharp
+Frame.Navigate(typeof(OtherPage));
+```
+
+to this:
+
+```csharp
+Frame.Navigate<OtherPage>();
+```
 
 ## API Reference
 
