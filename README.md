@@ -182,9 +182,7 @@ to this:
 Frame.Navigate<OtherPage>();
 ```
 
-## API Reference
-
-TBC.
+The type parameter is checked at compile-time to extend `Page`, so you don't accidentally write something like `Frame.Navigate<int>()`.
 
 ## License
 
