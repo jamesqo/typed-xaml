@@ -168,6 +168,20 @@ Similarly to the `Command` APIs, here's how you would use it from XAML:
 
 If you wish to pass in values to your converter, you can inherit from the `Converter<I, P, O>` class which takes an extra parameter of type `P`.
 
+### Frame extensions (UWP only)
+
+You can change code like this:
+
+```csharp
+Frame.Navigate(typeof(OtherPage));
+```
+
+to this:
+
+```csharp
+Frame.Navigate<OtherPage>();
+```
+
 ## API Reference
 
 TBC.
