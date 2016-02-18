@@ -1,3 +1,4 @@
 configuration: Release
 install:
   - dnvm upgrade
+  - nuget restore
