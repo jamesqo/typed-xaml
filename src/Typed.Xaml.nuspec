@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <title>Typed XAML</title>
+    <id>Typed.Xaml</id>
+    <version>$version$</version>
+    <authors>James Ko</authors>
+    <iconUrl>http://i.imgur.com/dm65ZkB.png</iconUrl>
+    <licenseUrl>http://github.com/jamesqo/typed-xaml/blob/master/LICENSE</licenseUrl>
+    <projectUrl>http://github.com/jamesqo/typed-xaml</projectUrl>
+    <description>
+    Typed XAML adds advanced generics support to WPF and Windows 10 apps.
+
+    Find us on GitHub at https://github.com/jamesqo/typed-xaml
+    </description>
+    <tags>.net csharp c# wpf windows 10 runtime apps app phone winrt generic generics typed xaml typed-xaml</tags>
+  </metadata>
+  <files>
+    <file src="Typed.Xaml.Wpf\bin\Release\Typed.Xaml.dll" target="lib\net45" />
+    <file src="Typed.Xaml.Uwp\bin\Release\Typed.Xaml.dll" target="lib\portable-netcore451+wpa81" />
+  </files>
+</package>
