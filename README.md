@@ -55,6 +55,42 @@ public class Square : DependencyObject
 
 Note the lack of any casting/`typeof` operators, which we would have to (ab)use in vanilla MVVM.
 
+## How does it work?
+
+This philosophy of Typed XAML is that *it's just syntax sugar.* All it does is call into the existing APIs you know and <s>hate</s> love. For example, here is how the `Get` and `Set` extension methods for `DependencyObject` are written:
+
+```csharp
+public static T Get<T>(this DependencyObject obj, DependencyProperty property)
+{
+    return (T)obj.GetValue(property);
+}
+
+public static void Set<T>(this DependencyObject obj, DependencyProperty property, T value)
+{
+    obj.SetValue(property, value);
+}
+```
+
+As you can see, all they're doing is calling into existing functions. While this may not provide a huge functional benefit, it *does* allow you to write cleaner code like this:
+
+```csharp
+public string Foobar
+{
+    get { return this.Get<string>(FoobarProperty); }
+    set { this.Set(FoobarProperty, value); }
+}
+```
+
+as opposed to this:
+
+```csharp
+public string Foobar
+{
+    get { return (string)this.GetValue(FoobarProperty); }
+    set { this.SetValue(FoobarProperty, value); }
+}
+```
+
 ## API Reference
 
 TBC.
