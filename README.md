@@ -22,12 +22,11 @@ Install-Package Typed.Xaml
 
 ## What can it do?
 
-Typed XAML:
+Typed XAML has three main goals:
 
-- makes your code more readable
-- introduces a cleaner syntax for expressing types
-- lets you easily create dependency properties, free of casting and `typeof`
-- provides generic base classes that can work with the type-unsafe APIs
+- it lets you write your MVVM code in modern, generic C#
+- it provides classes that bridge with the type-unsafe APIs
+- it does not force you to refactor existing codebases
 
 ## Show me!
 
@@ -54,7 +53,7 @@ public class Square : DependencyObject
 }
 ```
 
-That's it! No casting, no `typeof`, and as an added bonus the getter/setters are clearer to read.
+Note the lack of any casting/`typeof` operators, which we would have to (ab)use in vanilla MVVM.
 
 ## API Reference
 
