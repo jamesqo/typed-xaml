@@ -2,7 +2,7 @@
 
 <img src="http://i.imgur.com/dm65ZkB.png" width="25%"/>
 
-![](https://travis-ci.org/jamesqo/typed-xaml.svg) ![](https://ci.appveyor.com/api/projects/status/github/jamesqo/typed-xaml?branch=master&svg=true) [![Join the chat at https://gitter.im/jamesqo/typed-xaml](https://badges.gitter.im/jamesqo/typed-xaml.svg)](https://gitter.im/jamesqo/typed-xaml?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join the chat at https://gitter.im/jamesqo/typed-xaml](https://badges.gitter.im/jamesqo/typed-xaml.svg)](https://gitter.im/jamesqo/typed-xaml?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) ![](https://travis-ci.org/jamesqo/typed-xaml.svg) ![](https://ci.appveyor.com/api/projects/status/github/jamesqo/typed-xaml?branch=master&svg=true)
 
 An intuitive library for using generics in your WPF and Windows 10 projects.
 
