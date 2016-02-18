@@ -4,8 +4,7 @@ install:
   - source ~/.dnx/dnvm/dnvm.sh
   - dnvm upgrade
   - nuget restore
-  # Mono hasn't implemented WPF, so don't build that
-  - cd src/Typed.Xaml.Uwp
+  - cd src/Typed.Xaml.Uwp # Mono hasn't implemented WPF, so don't build that
   - xbuild /p:Configuration=Release
 mono:
   - nightly
