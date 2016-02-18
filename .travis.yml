@@ -1,7 +1,7 @@
 language: csharp
 install:
   # replace with actual code once we can run on Linux
-  - true
+  - xbuild /version
 mono:
   - nightly
 notifications:
