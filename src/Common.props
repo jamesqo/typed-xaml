@@ -3,6 +3,7 @@
         <CompileRoot>$(MSBuildThisFileDirectory)\Typed.Xaml</CompileRoot>
     </PropertyGroup>
     <ItemGroup>
+        <!-- Compile everything in the Typed.Xaml dir -->
         <Compile Include="$(CompileRoot)\**\*.cs" />
     </ItemGroup>
 </Project>
