@@ -9,12 +9,6 @@ namespace Typed.Xaml
 {
     public static class Dependency
     {
-        private static PropertyMetadata CreateMetadata<T, TOwner>(PropertyChangedCallback<T, TOwner> callback)
-            where TOwner : DependencyObject
-        {
-            return new PropertyMetadata(default(T), WrapGenericCallback(callback));
-        }
-
         public static DependencyProperty Register<T, TOwner>(string name, PropertyChangedCallback<T, TOwner> callback)
             where TOwner : DependencyObject
         {
@@ -36,12 +30,6 @@ namespace Typed.Xaml
         public static DependencyProperty RegisterAttached<T, TDeclaring>(string name, PropertyMetadata metadata)
         {
             return DependencyProperty.RegisterAttached(name, typeof(T), typeof(TDeclaring), metadata);
-        }
-
-        private static PropertyChangedCallback WrapGenericCallback<T, TOwner>(PropertyChangedCallback<T, TOwner> original)
-            where TOwner : DependencyObject
-        {
-            return (o, args) => original((TOwner)o, PropertyChangedArgs<T>.CreateFrom(args));
         }
     }
 }
