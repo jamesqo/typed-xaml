@@ -13,7 +13,7 @@ namespace Typed.Xaml
         public static DependencyProperty Register<T, TOwner>(string name, PropertyChangedCallback<T, TOwner> callback)
             where TOwner : DependencyObject
         {
-            return Register<T, TOwner>(name, Metadata.Create(callback));
+            return Register<T, TOwner>(name, Metadata.CreateFrom(callback));
         }
 
         public static DependencyProperty Register<T, TOwner>(string name, PropertyMetadata metadata)
@@ -25,7 +25,7 @@ namespace Typed.Xaml
         public static DependencyProperty RegisterAttached<T, TOwner, TDeclaring>(string name, PropertyChangedCallback<T, TOwner> callback)
             where TOwner : DependencyObject
         {
-            return RegisterAttached<T, TDeclaring>(name, Metadata.Create(callback));
+            return RegisterAttached<T, TDeclaring>(name, Metadata.CreateFrom(callback));
         }
 
         public static DependencyProperty RegisterAttached<T, TDeclaring>(string name, PropertyMetadata metadata)
