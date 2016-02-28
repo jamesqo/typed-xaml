@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Converters\ConverterBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UIElementExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
