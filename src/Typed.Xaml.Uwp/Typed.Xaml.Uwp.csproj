@@ -39,6 +39,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Converters\ConverterBase.cs" />
+    <Compile Include="DependencyObjectExtensions.cs" />
     <Compile Include="FrameExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
