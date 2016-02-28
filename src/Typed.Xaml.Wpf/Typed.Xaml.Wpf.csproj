@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="AnimatableExtensions.cs" />
     <Compile Include="Converters\ConverterBase.cs" />
+    <Compile Include="DependencyObjectExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
