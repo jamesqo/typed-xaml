@@ -5,7 +5,7 @@ using Windows.UI.Xaml;
 
 namespace Typed.Xaml
 {
-    public static class DependencyObjectExtensions
+    public static partial class DependencyObjectExtensions
     {
         public static T Get<T>(this DependencyObject obj, DependencyProperty property)
         {
