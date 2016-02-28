@@ -6,16 +6,16 @@ namespace Typed.Xaml
 {
     public static class DependencyPropertyExtensions
     {
-        public static DependencyProperty AddOwner<T>(this DependencyProperty property)
-            where T : DependencyObject
+        public static DependencyProperty AddOwner<TOwner>(this DependencyProperty property)
+            where TOwner : DependencyObject
         {
-            return property.AddOwner(typeof(T));
+            return property.AddOwner(typeof(TOwner));
         }
         
-        public static DependencyProperty AddOwner<T>(this DependencyProperty property, PropertyMetadata metadata)
-            where T : DependencyObject
+        public static DependencyProperty AddOwner<TOwner>(this DependencyProperty property, PropertyMetadata metadata)
+            where TOwner : DependencyObject
         {
-            return property.AddOwner(typeof(T), metadata);
+            return property.AddOwner(typeof(TOwner), metadata);
         }
     }
 }
