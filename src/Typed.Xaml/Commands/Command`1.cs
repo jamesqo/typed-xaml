@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Input;
 
-namespace Typed.Xaml
+namespace Typed.Xaml.Commands
 {
     public abstract class Command<T> : ICommand
     {
